@@ -1,45 +1,376 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>HappyWork - Celebrate Your Team</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HappyWork - Automated Employee Celebrations</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding: 50px;
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        .navbar {
             background: #1a365d;
-            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
         }
-        h1 {
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
             color: #63b3ed;
-            font-size: 2.5em;
-            margin-bottom: 10px;
         }
-        h2 {
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #1a365d 0%, #2d3748 100%);
             color: white;
-            font-size: 1.8em;
-            margin-bottom: 30px;
+            padding: 120px 0 80px;
+            text-align: center;
         }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
         .cta-button {
             background: #3182ce;
             color: white;
-            padding: 15px 30px;
             border: none;
+            padding: 15px 30px;
+            font-size: 1.1rem;
             border-radius: 5px;
-            font-size: 1.2em;
             cursor: pointer;
-            margin: 20px;
+            transition: background 0.3s;
         }
-        p {
-            font-size: 1.1em;
-            opacity: 0.9;
+
+        .cta-button:hover {
+            background: #2b6cb0;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a365d;
+            font-size: 2.5rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #3182ce;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            color: #1a365d;
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background: #f7fafc;
+        }
+
+        .mission-text {
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            text-align: center;
+        }
+
+        .values-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #38a169;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 80px 0;
+            background: white;
+        }
+
+        .benefits-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .benefit-item {
+            margin-bottom: 2rem;
+            padding-left: 2rem;
+            border-left: 3px solid #3182ce;
+        }
+
+        .benefit-item h4 {
+            color: #1a365d;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: #f7fafc;
+        }
+
+        .contact-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: #3182ce;
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: #2b6cb0;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1a365d;
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-options {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>HappyWork</h1>
-    <h2>Celebrate Your Team, Automatically</h2>
-    <button class="cta-button">GET STARTED</button>
-    <p>Save time while boosting employee happiness and building a stronger corporate culture</p>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">HAPPYWORK</div>
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#services" class="nav-link">Services</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#benefits" class="nav-link">Benefits</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Homepage/Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Celebrate Your Team,<br>Automatically</h1>
+            <p>Save time while boosting employee happiness and building a stronger corporate culture</p>
+            <button class="cta-button" onclick="document.querySelector('#contact').scrollIntoView({behavior: 'smooth'})">GET STARTED</button>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Our Services</h2>
+            <p class="mission-text">At HappyWork, we believe every celebration matters! Our automated services ensure that special occasions like birthdays are never overlooked.</p>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Birthday Cakes</h3>
+                    <p>Delicious cakes delivered to celebrate every birthday. Never miss a team member's special day again.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Fresh Flowers</h3>
+                    <p>Beautiful bouquets for work anniversaries and milestones. Show appreciation with elegant arrangements.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Personalized Cards</h3>
+                    <p>Thoughtful cards that make employees feel valued. Custom messages for every occasion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2>Our Commitment to Happiness</h2>
+            <p class="mission-text">Empowering employees through automated celebrations is our goal. We believe that <strong>recognizing achievements</strong> leads to greater employee satisfaction and loyalty. HappyWork ensures every milestone is celebrated, fostering a thriving workplace environment.</p>
+            
+            <div class="values-section">
+                <h3>Core Values that Inspire</h3>
+                <p>Our values center around <strong>transparency, respect, and collaboration</strong>. By nurturing these principles, we create a supportive atmosphere where everyone feels valued, ultimately strengthening corporate culture.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <h2>Why Choose HappyWork?</h2>
+            <div class="benefits-list">
+                <div class="benefit-item">
+                    <h4>Experience the benefits of automated employee recognition</h4>
+                    <p>Strengthen your corporate culture with our seamless celebration system.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>Celebrate every milestone effortlessly</h4>
+                    <p>Our system automates celebrations, ensuring no achievement goes unnoticed.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>Build a happier workplace culture</h4>
+                    <p>Recognizing milestones fosters employee engagement and boosts morale throughout the company.</p>
+                </div>
+                <div class="benefit-item">
+                    <h4>Streamlined process for all occasions</h4>
+                    <p>Enjoy a hassle-free experience, making celebrations easy and enjoyable for everyone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Get in Touch</h2>
+            <div class="contact-options">
+                <div class="contact-card" onclick="window.location.href='mailto:hello@happywork.com'">
+                    <h3>CONTACT OUR TEAM</h3>
+                    <p>We're here to help you</p>
+                </div>
+                <div class="contact-card" onclick="window.location.href='mailto:info@happywork.com'">
+                    <h3>REQUEST MORE INFORMATION</h3>
+                    <p>Reach out for any questions</p>
+                </div>
+                <div class="contact-card" onclick="window.location.href='mailto:support@happywork.com'">
+                    <h3>SUPPORT AND INQUIRIES</h3>
+                    <p>Learn how we can support your celebration needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>hello@happywork.com | +1 (555) 123-4567</p>
+            <p>&copy; 2024 HappyWork. Making workplaces happier, one celebration at a time.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(26, 54, 93, 0.95)';
+            } else {
+                navbar.style.background = '#1a365d';
+            }
+        });
+    </script>
 </body>
 </html>
